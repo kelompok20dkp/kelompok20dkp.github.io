@@ -36,13 +36,13 @@
       }
     }
     $data = new user("", "");
-    if (isset($_POST['data'])) {
-      $data->setUsername($_POST['username']);
-      $data->setKota($_POST['kota']);
+    if (isset($_GET['data'])) {
+      $data->setUsername($_GET['username']);
+      $data->setKota($_GET['kota']);
       echo "Selamat datang " . $data->getUsername() . " dari " . $data->getKota() . " dalam program konversi mata uang dari Rupiah ke mata uang asing.";
     }
   ?>
-  <form method="post">
+  <form method="get">
     <input type="text" placeholder="Jumlah" name="jumlah">
     Konversi ke
     <select name="kurs">
@@ -66,9 +66,9 @@
     function JPY($jumlah) {
       echo "Hasil konversi dari Rupiah ke Yen adalah ¥ " . round($jumlah / 132.84, 2);
     }
-    if (isset($_POST['submit'])) {
-      $jumlah = $_POST["jumlah"];
-      $kurs = $_POST["kurs"];
+    if (isset($_GET['submit'])) {
+      $jumlah = $_GET["jumlah"];
+      $kurs = $_GET["kurs"];
       if ($kurs == "usd") {
         USD($jumlah);
       }
